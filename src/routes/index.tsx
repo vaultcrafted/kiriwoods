@@ -1,26 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteShell } from "@/components/site/SiteShell";
+import { Hero } from "@/components/site/Hero";
+import { HowItWorks } from "@/components/site/HowItWorks";
+import { Categories } from "@/components/site/Categories";
+import { FeaturedCatalog } from "@/components/site/FeaturedCatalog";
+import { CreateBanner } from "@/components/site/CreateBanner";
+import { Values } from "@/components/site/Values";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "KIRI Art — Tavolette in legno stampate a mano" },
+      { name: "description", content: "Bottega italiana di stampa DTF su betulla. Pezzi unici, su misura, fatti a mano." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <SiteShell>
+      <Hero />
+      <HowItWorks />
+      <Categories />
+      <FeaturedCatalog />
+      <CreateBanner />
+      <Values />
+    </SiteShell>
+  );
 }
