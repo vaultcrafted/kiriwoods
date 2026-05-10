@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHeader } from "@/components/site/PageHeader";
-import { categories, products } from "@/data/products";
+import { categories, MIN_PRICE, products } from "@/data/products";
 
 export const Route = createFileRoute("/catalogo")({
   component: CatalogPage,
@@ -54,7 +54,7 @@ function CatalogPage() {
                 <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <h3 className="font-display text-xl mt-3 tracking-wide">{p.title.toUpperCase()}</h3>
-              <p className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{p.categoryLabel} · da €{p.basePrice}</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{p.categoryLabel} · da €{MIN_PRICE}</p>
             </Link>
           ))}
         </div>
