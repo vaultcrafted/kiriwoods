@@ -98,16 +98,26 @@ export function Header() {
       {open && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <nav className="flex flex-col px-5 py-4">
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground"
-              >
-                {n.label}
-              </Link>
-            ))}
+            {nav.map((n) => {
+              const active = n.match.some((m) => pathname === m || pathname.startsWith(`${m}/`));
+              return (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  className={`flex items-center gap-3 py-3 text-sm uppercase tracking-[0.22em] transition-colors ${
+                    active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`h-px transition-all ${active ? "w-6 bg-kiri-red" : "w-3 bg-border"}`}
+                  />
+                  {n.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}
