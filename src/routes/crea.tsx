@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Check, Upload } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHeader } from "@/components/site/PageHeader";
 import { categories, formats, thicknesses } from "@/data/products";
 
 export const Route = createFileRoute("/crea")({
@@ -42,7 +43,7 @@ function CreatePage() {
   if (submitted) {
     return (
       <SiteShell>
-        <div className="mx-auto max-w-2xl px-5 py-32 text-center">
+        <div className="mx-auto max-w-2xl px-5 pt-40 pb-32 text-center">
           <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-accent text-accent-foreground mb-8">
             <Check className="h-7 w-7" />
           </div>
@@ -65,17 +66,18 @@ function CreatePage() {
 
   return (
     <SiteShell>
-      <section className="mx-auto max-w-7xl px-5 md:px-8 pt-16 pb-10 noise relative">
-        <p className="font-jp text-sm text-kiri-red mb-3">su misura — 注文</p>
-        <h1 className="font-display text-6xl md:text-8xl leading-none">
-          CREA<br />
-          <span className="text-muted-foreground">LA TUA</span><br />
-          <span className="text-kiri-red">TAVOLA.</span>
-        </h1>
-        <p className="mt-6 max-w-xl text-base text-muted-foreground">
-          Carica un file, scegli i dettagli, raccontaci l'idea. Ti rispondiamo con preventivo entro 24h.
-        </p>
-      </section>
+      <PageHeader
+        eyebrow="su misura — 注文"
+        title={
+          <>
+            CREA<br />
+            <span className="text-muted-foreground">LA TUA</span><br />
+            <span className="text-kiri-red">TAVOLA.</span>
+          </>
+        }
+        intro="Carica un file, scegli i dettagli, raccontaci l'idea. Ti rispondiamo con preventivo entro 24h."
+        noise
+      />
 
       <div className="mx-auto max-w-7xl px-5 md:px-8 pb-32 grid lg:grid-cols-3 gap-10">
         <form onSubmit={onSubmit} className="lg:col-span-2 space-y-12">

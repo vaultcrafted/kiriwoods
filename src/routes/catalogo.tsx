@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHeader } from "@/components/site/PageHeader";
 import { categories, products } from "@/data/products";
 
 export const Route = createFileRoute("/catalogo")({
@@ -19,13 +20,12 @@ function CatalogPage() {
 
   return (
     <SiteShell>
-      <section className="mx-auto max-w-7xl px-5 md:px-8 pt-16 pb-12 noise">
-        <p className="font-jp text-sm text-kiri-red mb-3">カタログ</p>
-        <h1 className="font-display text-6xl md:text-8xl leading-none">CATALOGO</h1>
-        <p className="mt-5 max-w-xl text-base text-muted-foreground">
-          Una selezione viva, che cambia. Ogni pezzo viene stampato dopo l'ordine.
-        </p>
-      </section>
+      <PageHeader
+        eyebrow="カタログ — il catalogo"
+        title="CATALOGO"
+        intro="Una selezione viva, che cambia. Ogni pezzo viene stampato dopo l'ordine."
+        noise
+      />
 
       <div className="mx-auto max-w-7xl px-5 md:px-8 pb-24">
         <div className="flex flex-wrap gap-2 mb-10 border-y border-border py-5">

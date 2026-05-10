@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHeader } from "@/components/site/PageHeader";
 
 export const Route = createFileRoute("/storia")({
   component: StoryPage,
@@ -14,11 +15,19 @@ export const Route = createFileRoute("/storia")({
 function StoryPage() {
   return (
     <SiteShell>
-      <article className="mx-auto max-w-3xl px-5 md:px-8 py-20 noise">
-        <p className="font-jp text-sm text-kiri-red mb-3">桐 — la storia</p>
-        <h1 className="font-display text-6xl md:text-7xl leading-none">UN ALBERO,<br /><span className="text-muted-foreground">UNA STAMPA,</span><br /><span className="text-kiri-red">UN PEZZO.</span></h1>
-
-        <div className="prose prose-invert max-w-none mt-12 space-y-6 text-base text-muted-foreground leading-relaxed">
+      <PageHeader
+        eyebrow="桐 — la storia"
+        title={
+          <>
+            UN ALBERO,<br />
+            <span className="text-muted-foreground">UNA STAMPA,</span><br />
+            <span className="text-kiri-red">UN PEZZO.</span>
+          </>
+        }
+        noise
+      />
+      <article className="mx-auto max-w-3xl px-5 md:px-8 pb-24">
+        <div className="prose prose-invert max-w-none space-y-6 text-base text-muted-foreground leading-relaxed">
           <p className="text-foreground text-xl leading-relaxed">
             KIRI nasce in un piccolo laboratorio a Livorno Ferraris, in provincia di Vercelli. Una stampante DTF, tavole di betulla baltica, e l'idea che nessun pezzo debba essere uguale a un altro.
           </p>

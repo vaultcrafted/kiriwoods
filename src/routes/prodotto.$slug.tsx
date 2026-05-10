@@ -24,7 +24,7 @@ export const Route = createFileRoute("/prodotto/$slug")({
   }),
   notFoundComponent: () => (
     <SiteShell>
-      <div className="mx-auto max-w-3xl px-5 py-32 text-center">
+      <div className="mx-auto max-w-3xl px-5 pt-40 pb-32 text-center">
         <h1 className="font-display text-5xl">PRODOTTO NON TROVATO</h1>
         <Link to="/catalogo" className="mt-8 inline-block text-xs uppercase tracking-[0.25em] text-kiri-red">
           ← Torna al catalogo
@@ -56,7 +56,7 @@ function ProductPage() {
 
   return (
     <SiteShell>
-      <div className="mx-auto max-w-7xl px-5 md:px-8 pt-10">
+      <div className="mx-auto max-w-7xl px-5 md:px-8 pt-28 md:pt-32">
         <nav className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-6">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span className="mx-2">/</span>

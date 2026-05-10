@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHeader } from "@/components/site/PageHeader";
 
 export const Route = createFileRoute("/contatti")({
   component: ContactPage,
@@ -16,15 +17,14 @@ function ContactPage() {
   const [sent, setSent] = useState(false);
   return (
     <SiteShell>
-      <section className="mx-auto max-w-7xl px-5 md:px-8 py-20 grid md:grid-cols-2 gap-16">
+      <PageHeader
+        eyebrow="contatti — 連絡"
+        title="SCRIVICI."
+        intro="Per ordini speciali, collaborazioni, o solo per dirci ciao. Rispondiamo in giornata."
+      />
+      <section className="mx-auto max-w-7xl px-5 md:px-8 pb-24 grid md:grid-cols-2 gap-16">
         <div>
-          <p className="font-jp text-sm text-kiri-red mb-3">contatti — 連絡</p>
-          <h1 className="font-display text-6xl md:text-7xl leading-none">SCRIVICI.</h1>
-          <p className="mt-6 text-base text-muted-foreground max-w-md">
-            Per ordini speciali, collaborazioni, o solo per dirci ciao. Rispondiamo in giornata.
-          </p>
-
-          <dl className="mt-12 space-y-6 text-sm">
+          <dl className="space-y-6 text-sm">
             <div>
               <dt className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Laboratorio</dt>
               <dd className="font-display text-xl mt-1">Via dell'Arte 12<br />13046 Livorno Ferraris (VC)</dd>
