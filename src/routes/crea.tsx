@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { ArrowRight, Check, Upload } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHeader } from "@/components/site/PageHeader";
-import { categories, formats, thicknesses } from "@/data/products";
+import { categories, formats, getPrice, thicknesses } from "@/data/products";
 
 export const Route = createFileRoute("/crea")({
   component: CreatePage,
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/crea")({
 
 function CreatePage() {
   const [format, setFormat] = useState<(typeof formats)[number]["id"]>("A4");
-  const [thickness, setThickness] = useState<(typeof thicknesses)[number]["id"]>("3mm");
+  const [thickness, setThickness] = useState<(typeof thicknesses)[number]["id"]>("5mm");
   const [type, setType] = useState("foto");
   const [cat, setCat] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -28,10 +28,7 @@ function CreatePage() {
   const [submitted, setSubmitted] = useState(false);
 
   const price = useMemo(() => {
-    const base = 25;
-    const fm = formats.find((f) => f.id === format)!.multiplier;
-    const tm = thicknesses.find((t) => t.id === thickness)!.multiplier;
-    return base * fm * tm;
+    return getPrice(format, thickness);
   }, [format, thickness]);
 
   const onSubmit = (e: React.FormEvent) => {
@@ -118,7 +115,7 @@ function CreatePage() {
                   }`}
                 >
                   <div className="mb-3 flex items-end justify-center gap-1">
-                    <div className="bg-foreground/30 w-12" style={{ height: t.id === "3mm" ? 8 : 14 }} />
+                    <div className="bg-foreground/30 w-12" style={{ height: t.id === "5mm" ? 8 : 16 }} />
                   </div>
                   <span className="font-display text-2xl">{t.label}</span>
                 </button>
