@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
-import { formats, getProduct, products, thicknesses } from "@/data/products";
+import { formats, getPrice, getProduct, products, thicknesses } from "@/data/products";
 
 export const Route = createFileRoute("/prodotto/$slug")({
   component: ProductPage,
@@ -42,15 +42,13 @@ export const Route = createFileRoute("/prodotto/$slug")({
 function ProductPage() {
   const { product } = Route.useLoaderData();
   const [format, setFormat] = useState<(typeof formats)[number]["id"]>("A4");
-  const [thickness, setThickness] = useState<(typeof thicknesses)[number]["id"]>("3mm");
+  const [thickness, setThickness] = useState<(typeof thicknesses)[number]["id"]>("5mm");
   const [qty, setQty] = useState(1);
   const [openAcc, setOpenAcc] = useState<string | null>("dettagli");
 
   const price = useMemo(() => {
-    const fm = formats.find((f) => f.id === format)!.multiplier;
-    const tm = thicknesses.find((t) => t.id === thickness)!.multiplier;
-    return product.basePrice * fm * tm;
-  }, [product, format, thickness]);
+    return getPrice(format, thickness);
+  }, [format, thickness]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
