@@ -6,7 +6,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <main className="pt-16">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );
