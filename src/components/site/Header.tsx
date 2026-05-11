@@ -37,16 +37,11 @@ export function Header() {
           aria-label="KIRI Art home"
           aria-current={isHome ? "page" : undefined}
         >
-          <span
-            className={`font-display text-2xl tracking-wider transition-colors group-hover:text-kiri-red ${
-              isHome ? "text-kiri-red" : ""
-            }`}
-          >
-            KIRI
-          </span>
-          <span className="hidden sm:inline font-jp text-[10px] text-muted-foreground tracking-wider">
-            woods · art · design
-          </span>
+         <img
+            src="/logo-kiri.png"
+            alt="KIRI Art — woods · art · design"
+            className="h-9 md:h-10 w-auto transition-opacity group-hover:opacity-80"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
