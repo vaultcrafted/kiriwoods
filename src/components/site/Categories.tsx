@@ -15,16 +15,15 @@ export function Categories() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-        {categories.map((c, i) => {
+      {/* Mobile: scroll orizzontale · Desktop: 5 colonne uguali */}
+      <div className="flex md:grid md:grid-cols-5 gap-3 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none -mx-5 px-5 md:mx-0 md:px-0 pb-2 md:pb-0 scrollbar-hide">
+        {categories.map((c) => {
           const cover = products.find((p) => p.category === c.id)?.image;
           return (
             <Link
               key={c.id}
               to="/catalogo"
-              className={`group relative overflow-hidden rounded-sm border border-border bg-surface aspect-[3/4] ${
-                i === 0 ? "lg:col-span-2 lg:row-span-1 aspect-[3/4] lg:aspect-auto" : ""
-              }`}
+              className="group relative overflow-hidden rounded-sm border border-border bg-surface aspect-[3/4] flex-shrink-0 w-[75vw] sm:w-[55vw] md:w-auto snap-start"
             >
               {cover && (
                 <img
