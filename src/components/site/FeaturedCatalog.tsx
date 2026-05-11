@@ -18,15 +18,13 @@ export function FeaturedCatalog() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12">
-          {products.map((p, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10">
+          {products.slice(0, 4).map((p) => (
             <Link
               key={p.slug}
               to="/prodotto/$slug"
               params={{ slug: p.slug }}
-              className={`group block ${
-                i === 0 ? "md:col-span-2 lg:col-span-2 md:row-span-2" : ""
-              }`}
+              className="group block"
             >
               <div className="relative aspect-square overflow-hidden bg-background border border-border">
                 <img
