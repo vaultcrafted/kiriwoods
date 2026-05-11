@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const nav = [
   { to: "/catalogo", label: "Catalogo", match: ["/catalogo", "/prodotto"] },
@@ -70,24 +70,13 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:block text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-            IT / EN
-          </span>
-          <button
-            aria-label="Le mie richieste"
-            className="rounded-sm border border-border p-2 text-foreground transition-colors hover:border-kiri-red hover:text-kiri-red"
-          >
-            <ShoppingBag className="h-4 w-4" />
-          </button>
-          <button
-            aria-label="Apri menu"
-            onClick={() => setOpen((o) => !o)}
-            className="md:hidden rounded-sm border border-border p-2"
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
+        <button
+          aria-label="Apri menu"
+          onClick={() => setOpen((o) => !o)}
+          className="md:hidden rounded-sm border border-border p-2"
+        >
+          {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+        </button>
       </div>
 
       {open && (
