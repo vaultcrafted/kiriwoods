@@ -38,7 +38,7 @@ export function Header() {
           aria-current={isHome ? "page" : undefined}
         >
          <img
-            src="/logo-kiri.png"
+            src="/logo-kiri2.png"
             alt="KIRI Art — woods · art · design"
             className="h-9 md:h-10 w-auto transition-opacity group-hover:opacity-80"
           />
